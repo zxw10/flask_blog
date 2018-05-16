@@ -1,0 +1,15 @@
+{% extends 'common/base.html' %}
+{% block title %}
+    用户信息
+{% endblock %}
+{% block tcontent %}
+    <img src="{{ url_for('static',filename='upload/'+current_user.photo) }}" alt="头像" class="img-circle">
+    <div class="form-group">
+        <label for="exampleInputEmail1">用户名</label>
+        <input type="email" class="form-control" id="exampleInputEmail1" value="{{ current_user.username }}" readonly>
+    </div>
+    <div class="form-group">
+        <label for="exampleInputPassword1">邮箱</label>
+        <input type="text" class="form-control" id="exampleInputPassword1" value="{{ current_user.email }}" readonly>
+    </div>
+{% endblock %}

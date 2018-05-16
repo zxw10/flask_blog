@@ -1,0 +1,25 @@
+{% extends 'common/base.html' %}
+{% from 'common/macro.html' import show_page %}
+{% block title %}
+    首页
+{% endblock %}
+{% block tcontent %}
+    {{ wtf.quick_form(form) }}
+    <ul class="media-list">
+    {% for datum in data %}
+        <li class="media">
+            <div class="media-left">
+                <a href="#">
+                    <img class="media-object" src="{{ url_for('static',filename="upload/"+datum.user.photo) }}" alt="{{ datum.user.username }}">
+                </a>
+            </div>
+            <div class="media-body">
+{#                <div style="float:right; ">{{ moment(datum.timestamp).fromNow() }}</div>#}
+                <h4 class="media-heading">{{ datum.user.username }}</h4>
+                {{ datum.content }}
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+    {{ show_page(pagination,viewFunc) }}
+{% endblock %}
